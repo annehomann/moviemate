@@ -1,7 +1,7 @@
 {
-  "name": "react-chat-app",
+  "name": "moviemate",
   "version": "1.0.0",
-  "description": "react blog",
+  "description": "Full stack web application for the final Coder Academy CSB assessment",
   "main": "index.js",
   "engine": {
     "node": "10.16.0",
@@ -13,7 +13,7 @@
     "frontend": "npm run front --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
-  "author": "John ahn",
+  "author": "Anne Homann",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
