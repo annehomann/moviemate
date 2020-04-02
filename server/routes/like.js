@@ -64,7 +64,11 @@ router.post("/upLike", (req, res) => {
                 res.status(200).json({ success: true })
             })
     })
+
 })
+
+
+
 
 router.post("/unLike", (req, res) => {
 
@@ -80,7 +84,9 @@ router.post("/unLike", (req, res) => {
             if (err) return res.status(400).json({ success: false, err })
             res.status(200).json({ success: true })
         })
+
 })
+
 
 router.post("/unDisLike", (req, res) => {
 
@@ -96,7 +102,11 @@ router.post("/unDisLike", (req, res) => {
         if (err) return res.status(400).json({ success: false, err })
         res.status(200).json({ success: true })
     })
+
+
 })
+
+
 
 router.post("/upDisLike", (req, res) => {
 
@@ -118,6 +128,20 @@ router.post("/upDisLike", (req, res) => {
                 res.status(200).json({ success: true })
             })
     })
+
+
 })
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

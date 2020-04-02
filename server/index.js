@@ -14,6 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Routes for user interactivity
+app.use('/api/users', require('./routes/users'));
+app.use('/api/comment', require('./routes/comment'));
+app.use('/api/like', require('./routes/like'));
+app.use('/api/favourite', require('./routes/favourite'));
+
+//use this to show the image you have in nodejs server to client (react)
+app.use('/uploads', express.static('uploads'));
+
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
 
