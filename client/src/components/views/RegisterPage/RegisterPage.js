@@ -1,3 +1,7 @@
+// ----------------------------------------
+//         Sign up Page Component
+// ----------------------------------------
+
 import React from "react";
 import moment from "moment";
 import { Formik } from 'formik';
@@ -34,10 +38,11 @@ const tailFormItemLayout = {
   },
 };
 
+// This function is the main engine of the Sign Up functionality
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
-
+    // Initial Sign Up form
     <Formik
       initialValues={{
         email: '',
@@ -46,6 +51,7 @@ function RegisterPage(props) {
         password: '',
         confirmPassword: ''
       }}
+      // Start of schema builder for value parsing and validation
       validationSchema={Yup.object().shape({
         name: Yup.string()
           .required('Name is required'),

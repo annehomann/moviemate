@@ -1,3 +1,6 @@
+// ------------------------------------
+//         Comments Component
+// ------------------------------------
 import React, { useState } from 'react'
 import { Button, Input, Typography, } from 'antd';
 import axios from 'axios';
@@ -6,6 +9,8 @@ import SingleComment from './SingleComment';
 import ReplyComment from './ReplyComment';
 const { TextArea } = Input;
 const { Title } = Typography;
+
+// This function is the main engine of the Comments functionality
 function Comments(props) {
     const user = useSelector(state => state.user)
     const [Comment, setComment] = useState("")
@@ -17,6 +22,7 @@ function Comments(props) {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        // Prompts user to be logged in to comment
         if (user.userData && !user.userData.isAuth) {
             return alert('Please Log in first');
         }
@@ -28,6 +34,7 @@ function Comments(props) {
         }
         console.log(variables)
 
+        // Promise HTTP request
         axios.post('/api/comment/saveComment', variables)
             .then(response => {
                 if (response.data.success) {
@@ -71,6 +78,7 @@ function Comments(props) {
                     placeholder="Comment here..."
                 />
                 <br />
+                {/* Submit Button */}
                 <Button style={{ width: '20%', height: '52px', backgroundColor: 'green', color: '#FFFFFF', fontWeight: 'bold'}} onClick={onSubmit}>Submit</Button>
             </form>
 

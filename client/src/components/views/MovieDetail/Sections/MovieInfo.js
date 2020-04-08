@@ -1,6 +1,8 @@
+// Specific movie information that comes back from The Movie Db API for each individual movie
 import React from 'react'
 import { Descriptions, Badge } from 'antd';
 
+// This function is the main engine for the fetching of movie info from API
 function MovieInfo(props) {
 
     const { movie } = props;

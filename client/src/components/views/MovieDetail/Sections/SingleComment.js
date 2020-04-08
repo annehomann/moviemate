@@ -1,9 +1,14 @@
+// --------------------------------------------
+//         Making a Comment Component
+// --------------------------------------------
 import React, { useState } from 'react'
 import { Comment, Avatar, Button, Input } from 'antd';
 import Axios from 'axios';
 import { useSelector } from 'react-redux';
 import LikeDislikes from './LikeDislikes';
 const { TextArea } = Input;
+
+// This function is the main engine for making a main comment
 function SingleComment(props) {
     const user = useSelector(state => state.user);
     const [CommentValue, setCommentValue] = useState("")
@@ -27,7 +32,7 @@ function SingleComment(props) {
             content: CommentValue
         }
 
-
+        // Promise HTTP request
         Axios.post('/api/comment/saveComment', variables)
             .then(response => {
                 if (response.data.success) {
@@ -63,7 +68,6 @@ function SingleComment(props) {
                 }
             ></Comment>
 
-
             {OpenReply &&
                 <form style={{ display: 'flex' }} onSubmit={onSubmit}>
                     <TextArea
@@ -76,7 +80,6 @@ function SingleComment(props) {
                     <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
                 </form>
             }
-
         </div>
     )
 }

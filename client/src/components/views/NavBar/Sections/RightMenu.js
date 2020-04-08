@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Menu } from 'antd';
 import axios from 'axios';
@@ -7,10 +6,13 @@ import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
 const Upload = require('../../../../assets/images/upload.png');
 
+// Function for Right Menu Component which is the Sign Up/Sign In/Logout functionality
 function RightMenu(props) {
   const user = useSelector(state => state.user)
 
+  // Log out function
   const logoutHandler = () => {
+    // Promise HTTP request
     axios.get(`${USER_SERVER}/logout`).then(response => {
       if (response.status === 200) {
         props.history.push("/login");
@@ -20,6 +22,7 @@ function RightMenu(props) {
     });
   };
 
+  // Sign up/Sign in function
   if (user.userData && !user.userData.isAuth) {
     return (
       <Menu mode={props.mode}>

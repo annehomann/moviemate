@@ -1,8 +1,14 @@
+// --------------------------------------------
+//         Authentication Component
+// --------------------------------------------
+
 import React, { useEffect } from 'react';
 import { auth } from '../_actions/user_actions';
 import { useSelector, useDispatch } from "react-redux";
 
 export default function (ComposedClass, reload, adminRoute = null) {
+
+    // This function is the main engine of the authentication functionality
     function AuthenticationCheck(props) {
 
         let user = useSelector(state => state.user);

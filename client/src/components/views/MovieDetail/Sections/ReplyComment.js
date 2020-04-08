@@ -1,6 +1,10 @@
+// --------------------------------------------
+//         Reply to a Comment Component
+// --------------------------------------------
 import React, { useEffect, useState } from 'react'
 import SingleComment from './SingleComment';
 
+// This function is the main engine for the replying of comments functionality
 function ReplyComment(props) {
 
     const [ChildCommentNumber, setChildCommentNumber] = useState(0)
@@ -17,7 +21,7 @@ function ReplyComment(props) {
         setChildCommentNumber(commentNumber)
     }, [props.CommentLists, props.parentCommentId])
 
-
+    // Finds main comment ID
     let renderReplyComment = (parentCommentId) =>
         props.CommentLists.map((comment, index) => (
             <React.Fragment>
@@ -34,10 +38,8 @@ function ReplyComment(props) {
         setOpenReplyComments(!OpenReplyComments)
     }
 
-
     return (
         <div>
-
             {ChildCommentNumber > 0 &&
                 <p style={{ fontSize: '14px', margin: 0, color: 'gray' }}
                     onClick={handleChange} >

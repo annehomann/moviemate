@@ -1,17 +1,24 @@
+// ----------------------------------------
+//         Favourite Page Component
+// ----------------------------------------
+
 import React, { useEffect, useState } from 'react'
 import { Typography, Popover, Button } from 'antd';
 import axios from 'axios';
+// Bring in specific style
 import './favourite.css';
 import { useSelector } from 'react-redux';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../Config'
 
 const { Title } = Typography;
 
+// This function is the main engine of the Favourites Page functionality 
 function FavouritePage() {
     const user = useSelector(state => state.user)
 
     const [Favourites, setFavourites] = useState([])
     const [Loading, setLoading] = useState(true)
+    // Gets user ID
     let variable = { userFrom: localStorage.getItem('userId') }
 
     useEffect(() => {
@@ -51,7 +58,7 @@ function FavouritePage() {
 
     const renderCards = Favourites.map((favourite, index) => {
 
-
+        // Table of movies that have been added to favourites
         const content = (
             <div>
                 {favourite.moviePost ?

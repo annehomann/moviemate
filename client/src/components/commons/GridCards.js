@@ -1,7 +1,12 @@
 import React from 'react'
-import { Card, Avatar, Col, Typography, Row } from 'antd';
-import { IMAGE_BASE_URL } from '../Config';
+import { 
+    Card, Avatar, Col, Typography, Row 
+} from 'antd';
+import { 
+    IMAGE_BASE_URL 
+} from '../Config';
 
+// This function allows photos of actors to appear in a grid for easy layout
 function GridCards(props) {
 
     let { actor, key, image, movieId, movieName, characterName } = props

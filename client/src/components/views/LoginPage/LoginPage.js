@@ -1,3 +1,7 @@
+// ----------------------------------------
+//         Log in Page Component
+// ----------------------------------------
+
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_actions";
@@ -8,8 +12,10 @@ import { useDispatch } from "react-redux";
 
 const { Title } = Typography;
 
+// This function is the main engine of the Log In functionality
 function LoginPage(props) {
   const dispatch = useDispatch();
+  // Box can be ticked for user log in details to be saved to local storage for easier logging in
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
   const [formErrorMessage, setFormErrorMessage] = useState('')
@@ -22,11 +28,13 @@ function LoginPage(props) {
   const initialEmail = localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
 
   return (
+    // Initial Log in form
     <Formik
       initialValues={{
         email: initialEmail,
         password: '',
       }}
+      // Start of schema builder for value parsing and validation
       validationSchema={Yup.object().shape({
         email: Yup.string()
           .email('Email is invalid')

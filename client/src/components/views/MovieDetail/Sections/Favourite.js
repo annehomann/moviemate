@@ -1,8 +1,12 @@
+// ------------------------------------
+//         Favourite Component
+// ------------------------------------
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 
+// This function is the main engine of the Favourites functionality 
 function Favourite(props) {
     const user = useSelector(state => state.user)
 
@@ -22,6 +26,7 @@ function Favourite(props) {
         movieRunTime: movieRunTime
     }
 
+    // When movie is added to favourites
     const onClickFavourite = () => {
 
         if (user.userData && !user.userData.isAuth) {
@@ -29,7 +34,8 @@ function Favourite(props) {
         }
 
         if (Favourited) {
-            //when we are already subscribed 
+            // when we are already subscribed 
+            // Promise HTTP request
             axios.post('/api/favourite/removeFromFavourite', variables)
                 .then(response => {
                     if (response.data.success) {
@@ -42,7 +48,7 @@ function Favourite(props) {
 
         } else {
             // when we are not subscribed yet
-
+            // Promise HTTP request
             axios.post('/api/favourite/addToFavourite', variables)
                 .then(response => {
                     if (response.data.success) {
@@ -56,7 +62,7 @@ function Favourite(props) {
     }
 
     useEffect(() => {
-
+        // Promise HTTP request
         axios.post('/api/favourite/favouriteNumber', variables)
             .then(response => {
                 if (response.data.success) {
@@ -66,6 +72,7 @@ function Favourite(props) {
                 }
             })
 
+        // Promise HTTP request
         axios.post('/api/favourite/favourited', variables)
             .then(response => {
                 if (response.data.success) {

@@ -1,3 +1,4 @@
+// Details of each movie
 import React, { useEffect, useState } from 'react'
 import { List, Avatar, Row, Col, Button } from 'antd';
 import axios from 'axios';
@@ -9,8 +10,9 @@ import GridCards from '../../commons/GridCards';
 import MainImage from '../../views/LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import Favourite from './Sections/Favourite';
-function MovieDetailPage(props) {
 
+// This function brings in details of the individual movie
+function MovieDetailPage(props) {
     const movieId = props.match.params.movieId
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
@@ -27,6 +29,7 @@ function MovieDetailPage(props) {
         let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
         fetchDetailInfo(endpointForMovieInfo)
 
+        // Promise HTTP request
         axios.post('/api/comment/getComments', movieVariable)
             .then(response => {
                 console.log(response)
@@ -101,7 +104,7 @@ function MovieDetailPage(props) {
                 }
 
                 <br />
-                {/* Actors Grid*/}
+                {/* Actors Grid */}
 
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem' }}>
                     <Button onClick={toggleActorView}>Toggle Actor View </Button>

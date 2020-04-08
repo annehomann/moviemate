@@ -1,10 +1,17 @@
+// ------------------------------------
+//         Landing Component
+// ------------------------------------
 import React, { useEffect, useState, useRef } from 'react'
 import { Typography, Row, Button } from 'antd';
 import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } from '../../Config'
 import MainImage from './Sections/MainImage'
 import GridCard from '../../commons/GridCards'
 const { Title } = Typography;
+
+
+// This function is the main engine of the Landing Page
 function LandingPage() {
+    // set variables
     const buttonRef = useRef(null);
 
     const [Movies, setMovies] = useState([])
@@ -12,6 +19,7 @@ function LandingPage() {
     const [Loading, setLoading] = useState(true)
     const [CurrentPage, setCurrentPage] = useState(0)
 
+    // Grid layout of movies
     useEffect(() => {
         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
         fetchMovies(endpoint)
@@ -23,7 +31,6 @@ function LandingPage() {
 
 
     const fetchMovies = (endpoint) => {
-
         fetch(endpoint)
             .then(result => result.json())
             .then(result => {
@@ -62,6 +69,7 @@ function LandingPage() {
         }
     }
 
+    // Movie layout GUI seen by user
     return (
         <div style={{ width: '100%', margin: '0' }}>
             {MainMovieImage &&

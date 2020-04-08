@@ -1,3 +1,4 @@
+// Hero image at the top of the Landing Page
 import React from 'react'
 import { Typography } from 'antd';
 

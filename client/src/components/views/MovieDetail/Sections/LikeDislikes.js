@@ -1,8 +1,12 @@
+// ------------------------------------
+//         Like/Dislike Component
+// ------------------------------------
 import React, { useEffect, useState } from 'react'
 import { Tooltip, Icon } from 'antd';
 import Axios from 'axios';
 import { useSelector } from 'react-redux';
 
+// This function is the main engine for the like/dislike functionality
 function LikeDislikes(props) {
     const user = useSelector(state => state.user)
 
@@ -18,20 +22,17 @@ function LikeDislikes(props) {
         variable = { commentId: props.commentId, userId: props.userId }
     }
 
-    
-
-
     useEffect(() => {
-
+        // Promise HTTP request for Like function
         Axios.post('/api/like/getLikes', variable)
             .then(response => {
                 console.log('getLikes',response.data)
 
                 if (response.data.success) {
-                    //How many likes does this video or comment have 
+                    // How many likes does this comment have 
                     setLikes(response.data.likes.length)
 
-                    //if I already click this like button or not 
+                    // If Like button is already clicked 
                     response.data.likes.map(like => {
                         if (like.userId === props.userId) {
                             setLikeAction('liked')
@@ -42,14 +43,15 @@ function LikeDislikes(props) {
                 }
             })
 
+        // Promise HTTP request for Dislike function
         Axios.post('/api/like/getDislikes', variable)
             .then(response => {
                 console.log('getDislike',response.data)
                 if (response.data.success) {
-                    //How many likes does this video or comment have 
+                    // How many likes does this comment have 
                     setDislikes(response.data.dislikes.length)
 
-                    //if I already click this like button or not 
+                    // If Dislike button is already clicked
                     response.data.dislikes.map(dislike => {
                         if (dislike.userId === props.userId) {
                             setDislikeAction('disliked')
@@ -59,12 +61,12 @@ function LikeDislikes(props) {
                     alert('Failed to get dislikes')
                 }
             })
-
     }, [])
 
 
     const onLike = () => {
        
+        // Prompts user to be logged in to like movie
         if (user.userData && !user.userData.isAuth) {
             return alert('Please Log in first');
         }
@@ -78,8 +80,7 @@ function LikeDislikes(props) {
                         setLikes(Likes + 1)
                         setLikeAction('liked')
 
-                        //If dislike button is already clicked
-
+                        // If dislike button is already clicked
                         if (DislikeAction !== null) {
                             setDislikeAction(null)
                             setDislikes(Dislikes - 1)
@@ -105,20 +106,20 @@ function LikeDislikes(props) {
                         alert('Failed to decrease the like')
                     }
                 })
-
         }
-
     }
 
 
     const onDisLike = () => {
 
+        // Prompts user to be logged in to dislike movie
         if (user.userData && !user.userData.isAuth) {
             return alert('Please Log in first');
         }
 
         if (DislikeAction !== null) {
 
+            // Promise HTTP request
             Axios.post('/api/like/unDisLike', variable)
                 .then(response => {
                     if (response.data.success) {
@@ -133,6 +134,7 @@ function LikeDislikes(props) {
 
         } else {
 
+            // Promise HTTP request
             Axios.post('/api/like/upDisLike', variable)
                 .then(response => {
                     if (response.data.success) {
@@ -150,11 +152,7 @@ function LikeDislikes(props) {
                         alert('Failed to increase dislike')
                     }
                 })
-
-
         }
-
-
     }
 
     return (

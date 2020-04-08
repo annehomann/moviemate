@@ -1,10 +1,16 @@
+// ----------------------------------
+//         Navigation Bar
+// ----------------------------------
+
 import React, { useState } from 'react';
 import LeftMenu from './Sections/LeftMenu';
 import RightMenu from './Sections/RightMenu';
 import { Drawer, Button, Icon } from 'antd';
+// Specific style for NavBar
 import './Sections/Navbar.css';
 const Logo = require('../../../assets/images/Logo.png');
 
+// This function is the main engine of the Navigation Bar
 function NavBar() {
   const [visible, setVisible] = useState(false)
 
