@@ -34,6 +34,7 @@
 
 .menu__container .ant-menu-horizontal {
   border-bottom: none;
+  background-color: #708090;
 }
 
 .menu__container .menu_left {
@@ -60,6 +61,16 @@
 /* align header of Drawer with header of page */
 .menu_drawer .ant-drawer-header {
   padding: 14px 24px !important;
+}
+
+/* Writing over specific ant design styles */
+.ant-menu-horizontal > .ant-menu-item > a {
+  color: #ffffff;
+  background-color: #708090;
+}
+
+.ant-menu {
+  font-size: 16px;
 }
 
 @media (max-width: 767px) {
