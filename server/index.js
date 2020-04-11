@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const dotenv = require('dotenv');
 const config = require("./config/key");
 
 // MongoDB connection using Mongoose

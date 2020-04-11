@@ -3,8 +3,8 @@ export const USER_SERVER = '/api/users';
 
 
 // Details for The Movie Db API
-export const API_URL = 'https://api.themoviedb.org/3/';
-export const API_KEY = '4ee9ae402d23f918f6e62ef1f67efe9b';
+export const API_URL = process.env.REACT_APP_MOVIE_API_URL;
+export const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 
 export const IMAGE_BASE_URL ='http://image.tmdb.org/t/p/';
