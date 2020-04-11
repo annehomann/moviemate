@@ -1,3 +1,5 @@
+// Schema for saving favourited movies to database
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

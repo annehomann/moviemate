@@ -1,5 +1,8 @@
+// Schema for saving users to database and requiring JWT
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+// used to salt passwords
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 
@@ -34,7 +37,7 @@ const userSchema = mongoose.Schema({
     }
 })
 
-
+// Schema for hashing passwords for new users
 userSchema.pre('save', function( next ) {
     var user = this;
     
@@ -61,6 +64,7 @@ userSchema.methods.comparePassword = function(plainPassword,cb){
     })
 }
 
+// Generate JWT when username and password match
 userSchema.methods.generateToken = function(cb) {
     var user = this;
     var token =  jwt.sign(user._id.toHexString(),'secret')
@@ -72,6 +76,7 @@ userSchema.methods.generateToken = function(cb) {
     })
 }
 
+// Verify cookie from browser with the saved token
 userSchema.statics.findByToken = function (token, cb) {
     var user = this;
 

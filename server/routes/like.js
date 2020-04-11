@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { Like } = require("../models/Like");
 const { Dislike } = require("../models/Dislike");
-
 const { auth } = require("../middleware/auth");
 
 // Routes for likes and dislikes functionality
 
+
+// Get user likes
 router.post("/getLikes", (req, res) => {
 
     let variable = {}
@@ -20,12 +21,10 @@ router.post("/getLikes", (req, res) => {
         .exec((err, likes) => {
             if (err) return res.status(400).send(err);
             res.status(200).json({ success: true, likes })
-        })
+        });
+});
 
-
-})
-
-
+// Get user dislikes
 router.post("/getDislikes", (req, res) => {
 
     let variable = {}
@@ -39,9 +38,9 @@ router.post("/getDislikes", (req, res) => {
         .exec((err, dislikes) => {
             if (err) return res.status(400).send(err);
             res.status(200).json({ success: true, dislikes })
-        })
+        });
 
-})
+});
 
 
 router.post("/upLike", (req, res) => {
@@ -62,14 +61,11 @@ router.post("/upLike", (req, res) => {
             .exec((err, disLikeResult) => {
                 if (err) return res.status(400).json({ success: false, err });
                 res.status(200).json({ success: true })
-            })
-    })
+            });
+    });
+});
 
-})
-
-
-
-
+// Remove Like
 router.post("/unLike", (req, res) => {
 
     let variable = {}
@@ -83,11 +79,10 @@ router.post("/unLike", (req, res) => {
         .exec((err, result) => {
             if (err) return res.status(400).json({ success: false, err })
             res.status(200).json({ success: true })
-        })
+        });
+});
 
-})
-
-
+// Remove Dislike 
 router.post("/unDisLike", (req, res) => {
 
     let variable = {}
@@ -101,11 +96,8 @@ router.post("/unDisLike", (req, res) => {
     .exec((err, result) => {
         if (err) return res.status(400).json({ success: false, err })
         res.status(200).json({ success: true })
-    })
-
-
-})
-
+    });
+});
 
 
 router.post("/upDisLike", (req, res) => {
@@ -126,22 +118,8 @@ router.post("/upDisLike", (req, res) => {
             .exec((err, likeResult) => {
                 if (err) return res.status(400).json({ success: false, err });
                 res.status(200).json({ success: true })
-            })
-    })
-
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
+            });
+    });
+});
 
 module.exports = router;

@@ -3,8 +3,10 @@ const router = express.Router();
 const { Comment } = require("../models/Comment");
 const { auth } = require("../middleware/auth");
 
-//Routes for saving and fetching comments
+// Routes for saving and fetching comments
 
+
+// Save comments
 router.post("/saveComment", auth, (req, res) => {
 
     const comment = new Comment(req.body)
@@ -22,6 +24,7 @@ router.post("/saveComment", auth, (req, res) => {
     })
 })
 
+// Fetch comments
 router.post("/getComments", (req, res) => {
 
     Comment.find({ "postId": req.body.movieId })

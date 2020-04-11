@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require("../models/User");
-
 const { auth } = require("../middleware/auth");
 
 // Routes for user profiles
 
+// Authentication of user
 router.get("/auth", auth, (req, res) => {
     res.status(200).json({
         _id: req.user._id,
@@ -19,8 +19,8 @@ router.get("/auth", auth, (req, res) => {
     });
 });
 
+// Register new user
 router.post("/register", (req, res) => {
-
     const user = new User(req.body);
 
     user.save((err, doc) => {
@@ -31,6 +31,7 @@ router.post("/register", (req, res) => {
     });
 });
 
+// User login
 router.post("/login", (req, res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user)
@@ -57,6 +58,7 @@ router.post("/login", (req, res) => {
     });
 });
 
+// User logout
 router.get("/logout", auth, (req, res) => {
     User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
         if (err) return res.json({ success: false, err });

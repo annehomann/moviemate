@@ -1,3 +1,5 @@
+// Schema for saving the like option to database
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

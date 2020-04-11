@@ -1,3 +1,5 @@
+// Schema for saving comments to database
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
