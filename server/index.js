@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require('dotenv');
 const config = require("./config/key");
+const cors = require("cors");
+
+app.use(cors())
 
 // MongoDB connection using Mongoose
 const mongoose = require("mongoose");
