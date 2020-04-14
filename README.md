@@ -45,3 +45,5 @@ As we never covered testing with Jest in class, I went through this phase quite 
 
 In local environment, **pkill node** is a great way to clear all servers and test without any issues.
 
+To run locally, download files and use **npm run dev** from the root directory
+
