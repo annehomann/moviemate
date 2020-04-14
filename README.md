@@ -37,6 +37,8 @@ Unfortuantely I had more success with my app in development mode than in product
 
 A few of my classmates were very kind ot help but they could not work out the issue either. I am hoping to figure this issue out over time as I cannot stop thinking about it!
 
+As we never covered testing with Jest in class, I went through this phase quite blindly. I read as much as I could on how to use it and wrote some tests but they all fail. This area will need further research and understanding in my own time to become proficient.
+
 
 
 ## Side notes
