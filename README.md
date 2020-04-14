@@ -1,6 +1,7 @@
 ## Movie Mate - Final assignment for Coder Academy
 
 https://movieeemate.herokuapp.com/
+
 https://github.com/annehomann/moviemate
 
 #### Purpose
